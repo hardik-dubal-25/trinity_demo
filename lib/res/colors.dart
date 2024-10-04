@@ -1,0 +1,48 @@
+import '../imports.dart';
+
+// https://www.computerhope.com/htmcolor.htm
+
+Color colorAppBlack = Colors.black,
+    colorAppBlack38 = Colors.black38,
+    colorAppBlack54 = Colors.black54,
+    colorAppOrangeShade200 = Colors.orange.shade200,
+    colorAppWhite = Colors.white,
+    colorAppRed = Colors.red,
+    colorAppBlueAccent = Colors.blueAccent,
+    colorAppBlueAccentShade400 = Colors.blueAccent.shade400,
+    colorAppGreen = Colors.green,
+    colorAppGreenAccent = Colors.greenAccent,
+    colorAppGrey = Colors.grey,
+    colorAppGreyShade300 = Colors.grey.shade300,
+    colorAppYellow = Colors.amber,
+    colorAppCyan = Colors.cyan.shade600,
+    colorAppBlue = const Color(0xff3B3486),
+    //colorAppPrimary = Colors.lightBlue,
+     colorAppPrimary =   Colors.teal.shade700,
+    colorTextGreyDark = const Color(0xffA4A4A4),
+    colorTextBlueGrey = const Color(0xff8991B8),
+    colorAppBlueGrey = const Color(0xff384060),
+    colorTextYellow = const Color(0xffCA7900),
+    colorTextGreen = const Color(0xff6B7F53),
+    colorTextRed = const Color(0xffA96060),
+    colorTextMidGrey = const Color(0xff5D627A),
+     colorLightGreen = const Color(0xffE1FFBB),
+    colorLightRed = const Color(0xffFFBBBB),
+    colorBorderGrey = const Color(0xffE3DfEE),
+    colorAppPurple = colorAppPrimary,
+    colorPurpleLight = const Color(0xffEFEAFC),
+    colorAppInidigo = const Color(0xff58315A),
+    colorAppPink = const Color(0xffFF8989),
+    colorAppYellowDark = const Color(0xffECBB5f),
+    colorAppPurpleLight = const Color(0xffccc3ff),
+    colorButtonYellow = const Color(0xffF8E559),
+    iconColorGrey = const Color(0xff8991B8),
+    colorContainer = const Color(0xffFFF7E0),
+    colorContainerYellow = const Color(0xffFFF8BB),
+    colorContainerBlueLight = const Color(0xffEAF0F9),
+    colorCardShadow = const Color.fromRGBO(57, 0, 165, 0.04),
+    colorBlackButtonBorder = const Color(0xffE9E1F4),
+    colorScaffoldBackground = const Color(0xffFAF8FF);
+
+Color colorNotificationIconBorder = const Color(0xffDFE3F7)
+;
