@@ -15,6 +15,7 @@ class AddContactScreen extends GetView<AddContactController> {
           padding: appPadding15,
           child: SingleChildScrollView(
               child: Form(
+                key: controller.formKey,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               text("FIrst Name", colorAppBlack, 14, fwt400),
@@ -42,6 +43,7 @@ class AddContactScreen extends GetView<AddContactController> {
                inputField2(
                 hintText: "ex. 9874563210",
                 controller: controller.mobileController,
+                maxLength: 10,
                 validation: controller.isMobileValid,
               ),
               verticalSpace10,
@@ -74,6 +76,13 @@ class AddContactScreen extends GetView<AddContactController> {
                 validation: controller.isFieldEmpty,
               ),
               verticalSpace10,
+              text("Landmark", colorAppBlack, 14, fwt400),
+              inputField2(
+                hintText: "",
+                controller: controller.landmarkController,
+                validation: controller.isFieldEmpty,
+              ),
+              verticalSpace10,
               text("Pincode", colorAppBlack, 14, fwt400),
               inputField2(
                 hintText: "ex. 380002",
@@ -100,7 +109,7 @@ class AddContactScreen extends GetView<AddContactController> {
                 child: ElevatedButton(onPressed: (){
                   FocusManager.instance.primaryFocus!.unfocus();
                         if (controller.formKey.currentState!.validate()) {
-                          controller.addNewContactApiCall;
+                          controller.addNewContactApiCall();
                         }
                 }, child: text("Add Contact", colorAppWhite, 16,fwt500)))
             ]),

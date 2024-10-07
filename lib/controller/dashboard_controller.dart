@@ -16,6 +16,7 @@ class DashboardController extends GetxController {
   final _contacts = <Contacts>[].obs;
   final _paginationFilter = PaginationFilter().obs;
   final _lastPage = false.obs;
+  RxInt currentPage = RxInt(0),lPage = RxInt(1);
 
   List<Contacts> get contacts => _contacts.toList();
   int get limit => _paginationFilter.value.limit!;
@@ -42,28 +43,38 @@ class DashboardController extends GetxController {
     _stateStatusRx.value = StateStatus.LOADING;
     var d = dio.Dio();
     try {
+      
       dio.Response response = await d.request(contactListApi,
         options: dio.Options(method: 'GET', headers: {
           'Authorization': 'Bearer ${getStorageRepository.read(token)}'
-        }),
+        },
+        
+        ),
+        queryParameters: {'page':currentPage.value + 1,'size':12}
       );
 
       if (response.statusCode == 200) {
-        print("object");
+         
         _stateStatusRx.value = StateStatus.SUCCESS;
+        currentPage.value = response.data['data']['current_page']; 
+        final List<Contacts> d = Contacts.fromArrayOfHashmap(response.data['data']['data']);
 
-        final List<Contacts> d = Contacts.fromArrayOfHashmap(response.data['data']);
         _contacts.addAll(d);
       }
     } catch (e) {
-      print("object error : $e");
+      debugPrint("object error : $e");
     }
   }
 
   void changeTotalPerPage(int limitValue) {
     _contacts.clear();
-    _lastPage.value = false;
-    _changePaginationFilter(1, limitValue);
+    if(limitValue == lPage.value){
+      _lastPage.value = true;
+    }
+    else{
+      _lastPage.value = false;
+    }
+    _changePaginationFilter(currentPage.value, lPage.value);
   }
 
   void _changePaginationFilter(int page, int limit) {

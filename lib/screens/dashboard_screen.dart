@@ -21,11 +21,13 @@ class DashboardScreen extends GetView<DashboardController> {
         ],
       ),
       floatingActionButton: ElevatedButton.icon(
+          style: ElevatedButton.styleFrom(shape: const CircleBorder()),
           onPressed: () => Get.toNamed(AppRoute.routeAddContact),
-          label: Icon(Icons.add)),
+          label: const Icon(Icons.add)),
       body: Stack(
         children: [
           RefreshIndicator(
+            triggerMode: RefreshIndicatorTriggerMode.anywhere,
             onRefresh: () async {
               controller.getContactList();
             },
@@ -37,23 +39,46 @@ class DashboardScreen extends GetView<DashboardController> {
                     itemCount: controller.contacts.length,
                     itemBuilder: (context, index) {
                       final user = controller.contacts[index];
-                      return ListTile(
-                        dense: true,
-                        title:
-                            Text("${user.firstName!} ${user.lastName ?? ""}"),
-                        trailing: const Icon(
-                          Icons.arrow_forward_ios,
-                          size: 16,
-                        ),
-                        shape: Border(
-                            bottom:
-                                BorderSide(color: colorAppGrey, width: 0.3)),
-                        subtitle: Text(user.mobile ?? ""),
-                        onTap: () {
+                      return GestureDetector(
+                        onTap: (){
                           Get.toNamed(AppRoute.routeContactDetails,
-                              arguments: user.id);
+                               arguments: user.id);
                         },
-                      );
+                        child: Container(
+                          margin: appPaddingT10,
+                          padding: appPaddingB10,
+                          decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.2,color: colorAppGrey))),
+                          child: Row(
+                            children: [
+                              horizontalSpace5,
+                              const Icon(Icons.person_3_outlined),
+                              horizontalSpace(10),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                text("${user.firstName!} ${user.lastName ?? ""}",colorAppBlack,20,fwt500),
+                                 text(user.mobile ?? "",colorAppBlack,16,fwt400),
+                              ],)
+                            ],
+                          ),
+                        ),
+                      ); 
+                      
+                      // ListTile(
+                      //   dense: true,
+                      //   leading: const Icon(Icons.person_3_outlined),
+                      //   title:
+                      //       Text("${user.firstName!} ${user.lastName ?? ""}"),
+                      //   trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                      //   shape: Border(
+                      //       bottom:
+                      //           BorderSide(color: colorAppGrey, width: 0.3)),
+                      //   subtitle: Text(user.mobile ?? ""),
+                      //   onTap: () {
+                      //     Get.toNamed(AppRoute.routeContactDetails,
+                      //         arguments: user.id);
+                      //   },
+                      // );
                     },
                   ),
                 )),

@@ -27,15 +27,23 @@ class NetworkInfoImpl implements NetworkInfo {
     }
     return false;
   }
+  
+  @override
+   
+  Future<ConnectivityResult> get connectivityResult => throw UnimplementedError();
+  
+  @override
+   
+  Stream<ConnectivityResult> get onConnectivityChanged => throw UnimplementedError();
 
   // TO CHECK TYPE OF INTERNET CONNECTIVITY
-  @override
-  Future<ConnectivityResult> get connectivityResult async {
-    return connectivity.checkConnectivity();
-  }
+  // @override
+  // Future<ConnectivityResult> get connectivityResult async {
+  //   return connectivity.checkConnectivity();
+  // }
 
-  // CHECK THE TYPE ON INTERNET CONNECTION ON CHANGED OF INTERNET CONNECTION
-  @override
-  Stream<ConnectivityResult> get onConnectivityChanged =>
-      connectivity.onConnectivityChanged;
+  // // CHECK THE TYPE ON INTERNET CONNECTION ON CHANGED OF INTERNET CONNECTION
+  // @override
+  // Stream<ConnectivityResult> get onConnectivityChanged =>
+  //     connectivity.onConnectivityChanged;
 }

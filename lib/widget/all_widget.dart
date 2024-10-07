@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 
-import '../imports.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../imports.dart'; 
 import 'package:intl/intl.dart';
 
 Widget imageWidget(String image) {
